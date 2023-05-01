@@ -33,6 +33,39 @@ export default function App() {
 //     )
 // }
 
+// const [starWarsData, setStarWarsData] = React.useState({})
+// const [count, setCount] = React.useState(0)
+
+//     // 1. GET the data (fetch)
+//     // 2. Save the data to state
+    
+//     // loop infinit console.log("Component rendered")
+
+//     // fetch("https://swapi.dev/api/people/1")
+//     //     .then(res => res.json())
+//     //     //.then(data => setStarWarsData(data))
+//     //     .then(data => console.log(data))
+ 
+ 
+//     // side effects
+ 
+//     React.useEffect( function(){
+//       fetch("https://swapi.dev/api/people/1")
+//           .then(res => res.json())
+//           .then(data => setStarWarsData(data))
+//           .then(data => console.log(data))
+//     }, [count])     
+
+//     return (
+//         <div>
+//             <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+//             <h2>The count is {count}</h2>
+//             <button onClick={() => setCount(prevCount => prevCount + 1)}>Add</button>
+//         </div>
+//     )
+// }
+
+// 
 const [starWarsData, setStarWarsData] = React.useState({})
 const [count, setCount] = React.useState(0)
 
@@ -47,10 +80,12 @@ const [count, setCount] = React.useState(0)
     //     .then(data => console.log(data))
  
  
-    // side effects
+    // seEffect: when to use dependencies
  
     React.useEffect( function(){
-      fetch("https://swapi.dev/api/people/1")
+        console.log("effect ran")
+      fetch(`https://swapi.dev/api/people/${count}`)
+
           .then(res => res.json())
           .then(data => setStarWarsData(data))
           .then(data => console.log(data))
@@ -60,7 +95,7 @@ const [count, setCount] = React.useState(0)
         <div>
             <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
             <h2>The count is {count}</h2>
-            <button onClick={() => setCount(prevCount => prevCount + 1)}>Add</button>
+            <button onClick={() => setCount(prevCount => prevCount + 1)}>Get Next Character</button>
         </div>
     )
 }
